@@ -1,0 +1,80 @@
+<?php
+include("trying.php");
+    error_reporting(0);
+?>
+<html>
+<head>
+</head>
+<body>
+
+<form action ="" method ="GET"><br><br>
+<label for="reg">Registration No:</label><br><br>
+<input type="text" id="reg" name="reg" value=""><br><br>
+
+<label for="o1">Subject 1 Marks obtained:</label><br><br>
+<input type="text" id="o1" name="o1" value=""><br><br>
+<label for="t1">Subject 1 Total marks:</label><br><br>
+<input type="text" id="t1" name="t1" value=""><br><br>
+
+<label for="o2">Subject 2 Marks obtained:</label><br><br>
+<input type="text" id="o2" name="o2" value=""><br><br>
+<label for="t2">Subject 2 Total marks:</label><br><br>
+<input type="text" id="t2" name="t2" value=""><br><br>
+
+<label for="o3">Subject 3 Marks obtained:</label><br><br>
+<input type="text" id="o3" name="o3" value=""><br><br>
+<label for="t3">Subject 3 Total marks:</label><br><br>
+<input type="text" id="t3" name="t3" value=""><br><br>
+
+<input type = "submit" name = "submit" value = "Submit"/>
+
+</form>
+
+<?php
+    
+    if($_GET['submit'])
+    {
+        $q = $_GET['reg'];
+        $w= $_GET['o1'];
+        $e= $_GET['t1'];
+        $r= $_GET['o2'];
+        $t= $_GET['t2'];
+        $y= $_GET['o3'];
+        $u= $_GET['t3'];
+        
+        $per = ($w + $r + $y)/($e + $t +$u)*100;
+        
+        if($q!="" && $w!="" && $e!="" && $r!="" && $t!="" && $y!="" && $u!="")
+        {
+            $query = "INSERT INTO Project VALUES('$q','$w','$e','$r','$t','$y','$u','$per')";
+                $data =  mysqli_query($con,$query);
+            if($data)
+            {
+                echo "Data entered succcessfully.\n\n";
+                
+                echo 'Your overall percentage for the three subjects is - '. $per;
+            }
+            
+        }
+        else
+        {
+            echo "All fields are required";
+            
+        }
+    }
+    
+   
+    
+    
+    
+  
+    
+   
+      
+    
+    
+     
+    ?>
+
+</body>
+</html>
