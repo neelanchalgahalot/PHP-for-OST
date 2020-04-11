@@ -9,22 +9,22 @@ include("trying.php");
 
 <form action ="" method ="GET"><br><br>
 <label for="reg">Registration No:</label><br><br>
-<input type="text" id="reg" name="reg" value=""><br><br>
+<input type="number" id="reg" name="reg" value=""><br><br>
 
 <label for="o1">Subject 1 Marks obtained:</label><br><br>
-<input type="text" id="o1" name="o1" value=""><br><br>
+<input type="number" id="o1" name="o1" value=""><br><br>
 <label for="t1">Subject 1 Total marks:</label><br><br>
-<input type="text" id="t1" name="t1" value=""><br><br>
+<input type="number" id="t1" name="t1" value=""><br><br>
 
 <label for="o2">Subject 2 Marks obtained:</label><br><br>
-<input type="text" id="o2" name="o2" value=""><br><br>
+<input type="number" id="o2" name="o2" value=""><br><br>
 <label for="t2">Subject 2 Total marks:</label><br><br>
-<input type="text" id="t2" name="t2" value=""><br><br>
+<input type="number" id="t2" name="t2" value=""><br><br>
 
 <label for="o3">Subject 3 Marks obtained:</label><br><br>
-<input type="text" id="o3" name="o3" value=""><br><br>
+<input type="number" id="o3" name="o3" value=""><br><br>
 <label for="t3">Subject 3 Total marks:</label><br><br>
-<input type="text" id="t3" name="t3" value=""><br><br>
+<input type="number" id="t3" name="t3" value=""><br><br>
 
 <input type = "submit" name = "submit" value = "Submit"/>
 
@@ -44,7 +44,7 @@ include("trying.php");
         
         $per = ($w + $r + $y)/($e + $t +$u)*100;
         
-        if($q!="" && $w!="" && $e!="" && $r!="" && $t!="" && $y!="" && $u!="")
+        if($q!="" && $w!="" && $e!="" && $r!="" && $t!="" && $y!="" && $u!="" && $e>=$w && $t>=$r && $u>=$y )
         {
             $query = "INSERT INTO Project VALUES('$q','$w','$e','$r','$t','$y','$u','$per')";
                 $data =  mysqli_query($con,$query);
@@ -56,11 +56,21 @@ include("trying.php");
             }
             
         }
+        
+       
+        
+        elseif($e<$w || $t<$r || $u<$y)
+        {
+            echo 'Marks obtained in any subject cannot be greater than the total marks for the same. Please try again.';
+        }
+        
         else
         {
             echo "All fields are required";
             
         }
+        
+        
     }
     
    
