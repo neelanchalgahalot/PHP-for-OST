@@ -59,7 +59,7 @@ include("trying.php");
         
        
         
-        elseif($e<$w || $t<$r || $u<$y)
+        elseif(($e<$w && $q!="" && $w!="" && $e!="" && $r!="" && $t!="" && $y!="" && $u!="") ||( $t<$r && $q!="" && $w!="" && $e!="" && $r!="" && $t!="" && $y!="" && $u!="") ||( $u<$y && $q!="" && $w!="" && $e!="" && $r!="" && $t!="" && $y!="" && $u!=""))
         {
             echo 'Marks obtained in any subject cannot be greater than the total marks for the same. Please try again.';
         }
@@ -72,17 +72,6 @@ include("trying.php");
         
         
     }
-    
-   
-    
-    
-    
-  
-    
-   
-      
-    
-    
      
     ?>
 
